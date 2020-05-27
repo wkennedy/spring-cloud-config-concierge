@@ -1,0 +1,13 @@
+{
+  "$id": "https://github.com/wkennedy/spring-cloud-config-concierge/my-service.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "my-service-config-schema",
+  "type": "object",
+  "properties": {
+    "my.service.property": {
+      "type": "string",
+      "description": "This is an example property"
+    }
+  },
+  "required": ["my.service.property"]
+}
