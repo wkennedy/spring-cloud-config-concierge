@@ -3,11 +3,40 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "my-service-config-schema",
   "type": "object",
+
   "properties": {
     "my.service.property": {
       "type": "string",
       "description": "This is an example property"
     }
   },
-  "required": ["my.service.property"]
+  
+  "required": [
+    "my.service.property"
+  ],
+  
+  "allOf": [
+    {
+      "if": {
+        "properties": {"environment.label.profile": {"const": "dev-na"}}
+      },
+      "then": {
+        "properties": 
+        {
+          "my.service.property": { "const":  "dev-na-value"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"environment.label.profile": {"const": "dev-sa"}}
+      },
+      "then": {
+        "properties":
+        {
+          "my.service.property": { "const":  "dev-sa-value"}
+        }
+      }
+    }
+  ]
 }
