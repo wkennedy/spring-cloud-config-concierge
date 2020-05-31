@@ -7,21 +7,26 @@
   "properties": {
     "my.service.property": {
       "type": "string",
-      "description": "This is an example property"
+      "description": "This is an example property that changes from environment to environment"
+    },
+    "consistent.property": {
+      "type": "string",
+      "description": "This is a property that is consistent across environments"
     }
   },
-  
+
   "required": [
-    "my.service.property"
+    "my.service.property",
+    "consistent.property"
   ],
-  
+
   "allOf": [
     {
       "if": {
         "properties": {"environment.label.profile": {"const": "dev-na"}}
       },
       "then": {
-        "properties": 
+        "properties":
         {
           "my.service.property": { "const":  "dev-na-value"}
         }
